@@ -1,0 +1,110 @@
+<html>
+
+<head>
+    <title>
+        VR FUN
+    </title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body id="bg">
+    <div class="position-relative h-100" id="games">
+        <div class="container position-absolute top-0 drage-event" style="left: 0;width: 96%;-webkit-app-region: drag;padding-bottom: 2.5rem;"></div>
+        <div class="container mb-2" style="margin-bottom: 3rem;">
+            <div class="position-absolute top-0 left-0 ml-4">
+                <h1>VR<br>FUN</h1>
+            </div>
+        </div>
+        <img src="./media/263-2638369_fantastic-vr-headset.png" width="20%" class="position-absolute" style="top: 2rem;left: 40%;">
+        <div class="container pl-2 text-left" style="padding-left: 9rem;">
+            <!-- <div class="vr" data-disable="5D" data-enable="9D" style="--btn-hue: 200; --btn-saturation: 100%; --btn-bg-lightness: 85%;">9D</div> -->
+            <!-- <div class="vr" data-disable="9D" data-enable="5D" style="--btn-hue: 200; --btn-saturation: 100%; --btn-bg-lightness: 85%;">5D</div> -->
+        </div>
+        <div class="container block-style-game-list " style="margin-top: 1.5rem;">
+            <div class="container" style="position: fixed;padding-left: 55px;">
+                <div id="play-video">
+                    <span class="switch">
+                        <div-button tabindex="0" style="height: 60px;
+                        width: 60px;
+                        text-align: center;">
+                            <b><img src="media/play.png" width="40"></b>
+                        </div-button>
+                    </span>
+                </div>
+                <div class="mt-2" id="stop-video">
+                    <span class="switch">
+                        <div-button tabindex="0" style="height: 60px;
+                        width: 60px;
+                        text-align: center;">
+                            <b><img src="media/stop.png" width="40"></b>
+                        </div-button>
+                    </span>
+                </div>
+            </div>
+            <div class="text-center container-games-list" id="9D" style="margin-left: 10rem;">
+
+            </div>
+            <div class="text-center container-games-list" id="5D" style="margin-left: 9rem;">
+
+            </div>
+        </div>
+        <div class="container">
+            <div style="position: absolute;bottom: 0;">
+                <!-- <img src="./media/vr.png" height="100" width="100"> -->
+                <div class="container">
+                    <div class="play">
+                        <div class="legs"></div>
+                        <div class="triangle-left">
+
+                            <div class="face1L">
+                                <div class="eyes"></div>
+                                <div class="nose"></div>
+                                <div class="mouth"></div>
+                                <div class="blush"></div>
+                            </div>
+                            <div class="cap"></div>
+                        </div>
+
+                    </div>
+                    <div class="stop">
+                        <div class="box">
+                            <div class="face1L">
+                                <div class="eyes"></div>
+                                <div class="nose"></div>
+                                <div class="mouth"></div>
+                                <div class="blush"></div>
+                            </div>
+                            <div class="cap"></div>
+                        </div>
+                        <div class="legs"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="position-absolute bottom-0 right-0 mr-2 mb-2">
+                <span class="switch">
+                    <div-button id="settingwindow" tabindex="0"
+                        style="padding-left: 1.5rem;padding-right: 1.5rem;padding-top: 0.5rem;padding-bottom: 0.5rem;background: yellow;" title="Setting">
+                        <img src="./media/settings.png" width="15px"><span style="color: #000;"><b>SETTING</b></span>
+                </div-button>
+                <div-button id="playlistwindow" tabindex="0" style="padding-left: 1.5rem;padding-right: 1.5rem;padding-top: 0.5rem;padding-bottom: 0.5rem;">
+                    <img src="./media/list.png" width="15px"><span style="color: #000;"><b>PLAY LIST</b></span>
+                </div-button>
+                <div-button id="close" tabindex="0" style="padding-left: 1.5rem;padding-right: 1.5rem;padding-top: 0.5rem;padding-bottom: 0.5rem;background:  #ff4242dc;" title="Setting">
+                    <img src="./media/close.png" width="15px"><span style="color: #000;"><b>CLOSE</b></span>
+                </div-button>
+                <div-button id="shutdown" tabindex="0" style="padding-left: 1.5rem;padding-right: 1.5rem;padding-top: 0.5rem;padding-bottom: 0.5rem;background-color: red;">
+                    <img src="./media/off.png" width="15px"> <span style="color: #fff;"><b>SHUTDOWN</b></span>
+                </div-button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.$ = window.JQuery = require('./js/jquery.min.js');
+    </script>
+    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="./js/operation.js"></script>
+    <script src="./js/gsap.min.js"></script>
+</body>
+
+</html>

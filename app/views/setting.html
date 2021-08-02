@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .otherwindow {
+            background-color: #63a4ff;
+            background-image: linear-gradient(60deg, #0690ec 50%, #512bd898 50%, #512bd898 25%);
+            overflow: hidden;
+        }
+
+        .span {
+            background: #d3d3d3;
+            padding-left: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-right: 5px;
+            color: #000;
+            font-size: 12px;
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body class="otherwindow">
+    <div class="container mb-2">
+        <div class="container position-absolute top-0"
+            style="left: 0;width: 77%;-webkit-app-region: drag;padding-bottom: 2.5rem;"></div>
+        <div class="position-absolute top-0 right-0 mr-2 mt-2">
+            <span class="switch" id="close">
+                <div-button tabindex="0" title="Close">
+                    <img src="../media/close.png" width="15px">
+                </div-button>
+            </span>
+        </div>
+    </div>
+    <div class="container text-center">
+        <!-- <div class="text-left">
+            <div>
+                <span class="span">COM-PORT</span><br>
+                <select id="com-port" style="padding: 10px;font-size:1rem;padding-right: 3rem;">
+                    <option value="">COM PORT</option>
+                </select>
+            </div>
+            <div class="mt-2">
+                <span class="span">BAUD-RATE</span><br>
+                <select id="baud-rate" class="" style="padding: 10px;font-size:1rem;padding-right: 3rem;">
+                    <option value="">BAUD RATE</option>
+                </select>
+            </div>
+        </div> -->
+        <div class="text-left">
+            <!-- <div class="mt-2">
+                    <span class="span">DATA-BIT</span><br>
+                    <input type="number" name="" id="databit" placeholder="Enter Data Bits" value="20"
+                        style="padding: 10px;font-size:1rem;">
+                </div>
+                <div class="mt-2">
+                    <span class="span">STOP-BIT</span><br>
+                    <input type="number" name="" id="stopbit" placeholder="Enter Stop Bits" value="500"
+                        style="padding: 10px;font-size:1rem;">
+                </div> -->
+            <div class="mt-2">
+                <span class="span">GAME PLAY DURATION</span><br>
+                <input type="number" name="" id="gameply" placeholder="Duration In Minute" value="1"
+                    style="padding: 10px;font-size:1rem;">
+            </div>
+        </div>
+        <div>
+            <div class="position-relative" style="left: -16px;width: 75%;">
+                <div class="position-absolute top-0 left-0 ml-2 mt-2">
+                    <span class="switch">
+                        <div-button><b>Choose Player</b><img src="../media/folder.png" width="15px"><input
+                                id="addfile" type="file" name="" style="width: 100%;    position: absolute;opacity: 0;">
+                        </div-button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="height: 0px;">
+        <div class="position-absolute right-0 left-0 bottom-0 text-center mr-2 mb-2">
+            <span class="switch" id="updatefiles">
+                <div-button style="--btn-hue: 200; --btn-saturation: 100%; --btn-bg-lightness: 85%;"><img
+                        src="../media/update.png" width="15px"><b>SAVE</b></div-button>
+            </span>
+        </div>
+        <div class="position-absolute" style="left: 12rem; top: 55%;">
+            <span id="myplayer" class="span">stereoPlayer.exe</span>
+            <input type="hidden" id="folder" value="C:\Program Files (x86)\Stereoscopic Player\StereoPlayer.exe">
+        </div>
+    </div>
+    <script>
+        window.$ = window.JQuery = require('../js/jquery.min.js');
+    </script>
+    <script type="text/javascript" src="../js/setting.js"></script>
+</body>
+
+</html>

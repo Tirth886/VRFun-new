@@ -1,0 +1,148 @@
+<html>
+
+<head>
+    <title>
+        PLAYLIST
+    </title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style type="text/css">
+        .otherwindow {
+            background-image: linear-gradient(120deg, #0690ec 50%, #512bd898 40%, #512bd898 0%);
+            overflow: hidden;
+        }
+        
+        input[type=file] {
+            opacity: 0;
+            position: absolute;
+            padding: 12px !important;
+        }
+        
+        .list-games {
+            padding: 0;
+        }
+        
+        button {
+            background: #FC8596;
+            color: #fff;
+            border: 0;
+        }
+        
+        button:hover {
+            cursor: pointer;
+        }
+        
+        .container-games-list .list-games:hover {
+            transition: none;
+            transform: none;
+        }
+        /*table{
+        		box-shadow: 1px 1px 20px 8px #d3d3;
+        		border: 1px solid;
+        	}*/
+        
+        table thead tr th {
+            border-bottom: 1px solid;
+            color: #000;
+            border: 1px solid #ccc;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        
+        table tbody tr td {
+            border-bottom: 1px solid;
+            padding-top: 5px;
+            color: #000;
+            border: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body class="otherwindow">
+    <div class="container mb-2" style="">
+        <div class="position-absolute top-0 left-0 ml-2 mt-2">
+            <span class="switch">
+				<div-button style=""><b>FOLDER</b><img src="../media/folder.png" width="15px"><input id="addfile"
+						type="file" name="" webkitdirectory directory multiple style="width: 100%;"></div-button>
+			</span>
+        </div>
+        <div class="container position-absolute top-0" style="left: 21.5%;width: 63%;-webkit-app-region: drag;padding-bottom: 2.5rem;"></div>
+        <div class="position-absolute top-0 right-0 mr-2 mt-2">
+            <span class="switch" id="close">
+				<div-button tabindex="0" title="Close" style="">
+					<img src="../media/close.png" width="15px">
+				</div-button>
+			</span>
+        </div>
+    </div>
+    <div class="container pl-2 text-center" style="">
+        <div-button style="--btn-hue: 200; --btn-saturation: 100%; --btn-bg-lightness: 85%;"><img src="../media/calculator.png" width="15px"><b>Playlist : <span id="count"></span></b></div-button>
+    </div>
+
+    <div class="container block-style-game-list" id="9D-container" style="max-height:  294px;display: flex;justify-content: center;">
+        <div class="container-games-list pr-1 pl-1" style="width: 30rem;">
+            <table border="1" width="100%" bgcolor="white" cellspacing="0" cellpadding="2" class="table">
+                <thead>
+                    <tr align="center" style="border-bottom: 1px solid;">
+                        <th>#ID</th>
+                        <th>File Name</th>
+                        <th>File Type</th>
+                        <th>
+                            <div class="top-0 left-0">
+                                <span class="switch">
+									<div-button style="min-height: 2ch;min-width: 0ch;"><img src="../media/folder.png"
+											width="15px"><input class="extra_add" data-var="9D" type="file" name=""
+											style="width: 100%;height: 100%;"></div-button>
+								</span>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="9D">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container block-style-game-list" id="5D-container" style="max-height:  294px;display: flex;justify-content: center;">
+        <div class="container-games-list pr-1 pl-1" style="width: 30rem;">
+            <table border="0" width="100%" bgcolor="white" cellspacing="0" cellpadding="2" class="table">
+                <thead>
+                    <tr align="center" style="border-bottom: 1px solid;">
+
+                        <th>#ID</th>
+                        <th>File Name</th>
+                        <th>File Type</th>
+                        <th>
+                            <div class="top-0 left-0">
+                                <span class="switch">
+									<div-button style="min-height: 2ch;min-width: 0ch;"><img src="../media/folder.png"
+											width="15px"><input class="extra_add" data-var="5D" type="file" name="" style="width: 100%;height: 100%;">
+									</div-button>
+								</span>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="5D">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container" style="height: 0px;">
+        <div class="position-absolute right-0 left-0 bottom-0 text-center mr-2 mb-2">
+            <span class="switch" id="updatefiles">
+				<div-button style="--btn-hue: 200; --btn-saturation: 100%; --btn-bg-lightness: 85%;"><img
+						src="../media/update.png" width="15px"><b>UPDATE</b></div-button>
+			</span>
+        </div>
+    </div>
+    <script>
+        window.$ = window.JQuery = require('../js/jquery.min.js');
+    </script>
+    <script type="text/javascript" src="../js/playlist.js"></script>
+
+</body>
+
+</html>
