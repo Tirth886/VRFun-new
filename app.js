@@ -11,7 +11,7 @@ app._maxListeners = 100;
 
 let mainWindow = null; // Default MainWindow is Empty
 const gotTheLock = app.requestSingleInstanceLock(); // prevent with duplicate window
-
+const { machineIdSync } = require('node-machine-id')
 
 function options(type, title, message) {
     const options = {
@@ -79,7 +79,10 @@ function openMainWindow() {
                 app.quit()
             }, 3000)
         } else {
-            if (token.trim() != "" && token.trim() == "A15F646F4CF8C4A34D63A5407668FD56") {
+            const $id = machineIdSync()
+            const $token = token.trim()
+            let mid = $token.split("#")
+            if (mid instanceof Array && mid.length > 1 && $id.toUpperCase() === mid[1] && mid[0] == "A15F646F4CF8C4A34D63A5407668FD56") {
                 home()
             } else {
                 dialog.showMessageBox(

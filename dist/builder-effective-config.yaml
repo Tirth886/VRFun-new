@@ -1,0 +1,14 @@
+directories:
+  output: dist
+  buildResources: build
+appId: app.vrfun.vrfun
+files:
+  - filter:
+      - '!publisher.json'
+      - '!updates.json'
+win:
+  asar: true
+  target:
+    - nsis
+  icon: ./app/media/logo.png
+electronVersion: 8.5.5
