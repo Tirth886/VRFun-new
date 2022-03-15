@@ -25,15 +25,16 @@ $(document).ready(() => {
             } catch (e) {
                 let fileevent = JSON.parse(localStorage.getItem("fileevent"))
                 let filename = fileevent.name
+                console.log("My FIle", filename)
                 if (filename != "undefined") {
                     try {
                         execSync('@echo off', { encoding: 'utf-8' });
-                        execSync("C:\/Windows\/System32\/taskkill.exe /im " + filename + ".exe /f", { encoding: 'utf-8' });
+                        execSync(`C:\/Windows\/System32\/taskkill.exe /im "${filename}.exe" /f`, { encoding: 'utf-8' });
                         execSync('pause', { encoding: 'utf-8' });
                         openwindow.playvideo.name.close()
                     } catch (e) {
                         execSync('@echo off', { encoding: 'utf-8' });
-                        execSync("C:\/Windows\/System32\/taskkill.exe /im " + filename + ".exe /t", { encoding: 'utf-8' });
+                        execSync(`C:\/Windows\/System32\/taskkill.exe /im "${filename}.exe" /t`, { encoding: 'utf-8' });
                         execSync('pause', { encoding: 'utf-8' });
                         openwindow.playvideo.name.close()
                     }
@@ -267,7 +268,6 @@ $(document).ready(() => {
             }
             $(document).find("div.single-click").length == 1 ? window_option.playvideo(openwindow) : alert("Select Game")
             TIMEOUT = closeWindow(setting_.myplayer, setting_.gameply ? setting_.gameply : 10000);
-
             ipcRenderer.send("process_", { "process": true })
         }
     })
