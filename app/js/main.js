@@ -25,7 +25,6 @@ $(document).ready(() => {
             } catch (e) {
                 let fileevent = JSON.parse(localStorage.getItem("fileevent"))
                 let filename = fileevent.name
-                console.log("My FIle", filename)
                 if (filename != "undefined") {
                     try {
                         execSync('@echo off', { encoding: 'utf-8' });
