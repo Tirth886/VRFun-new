@@ -5,6 +5,9 @@ const fs = require("fs")
 const path = require("path");
 const robot = require('robotjs');
 
+const si = require('systeminformation');
+
+
 const { app, BrowserWindow, globalShortcut, dialog } = require('electron');
 
 app._maxListeners = 100;
@@ -26,7 +29,8 @@ function options(type, title, message) {
 
 function home() {
     mainWindow = new BrowserWindow(setting(false));
-    mainWindow.openDevTools(true);
+    mainWindow.maximize()
+    // mainWindow.openDevTools(true);
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, "app", 'index.html'),
         protocol: 'file:',
@@ -36,8 +40,13 @@ function home() {
     mainWindow.on('closed', function () {
         mainWindow = null
     });
+
     globalShortcut.register('e', () => {
         mainWindow.webContents.send("test_process", { "status": true })
+    })
+
+    globalShortcut.register('Shift+Return', () => {
+        mainWindow.webContents.send("test_gamecoin_credit", { "status": true })
     })
 
 }
@@ -48,8 +57,8 @@ function setting(f) {
     const height = currentHW.height * 0.75
     const width = currentHW.width * 0.75
     return {
-        height: height,
-        width: width,
+        // height: height,
+        // width: width,
         center: true,
         resizable: false,
         alwaysOnTop: false,
@@ -79,25 +88,27 @@ function openMainWindow() {
                 app.quit()
             }, 3000)
         } else {
-            const $id = machineIdSync()
-            const $token = token.trim()
-            let mid = $token.split("#")
-            if (mid instanceof Array && mid.length > 1 && $id.toUpperCase() === mid[1] && mid[0] == "A15F646F4CF8C4A34D63A5407668FD56") {
-                home()
-            } else {
-                dialog.showMessageBox(
-                    new BrowserWindow({
-                        show: false,
-                        alwaysOnTop: true
-                    }), options("info", "Message", "Please Make Sure Your Software Is Activate. 👀"), (response) => {
-                        if (!response) {
-                            app.quit()
-                        }
-                    });
-                setTimeout(() => {
-                    app.quit()
-                }, 3000)
-            }
+            si.system().then(data => {
+                const $id = data.uuid + data.serial
+                const $token = token.trim()
+                let mid = $token.split("#")
+                if (mid instanceof Array && mid.length > 1 && $id.toUpperCase() === mid[1] && mid[0] == "A15F646F4CF8C4A34D63A5407668FD56") {
+                    home()
+                } else {
+                    dialog.showMessageBox(
+                        new BrowserWindow({
+                            show: false,
+                            alwaysOnTop: true
+                        }), options("info", "Message", "Please Make Sure Your Software Is Activate. 👀"), (response) => {
+                            if (!response) {
+                                app.quit()
+                            }
+                        });
+                    setTimeout(() => {
+                        app.quit()
+                    }, 3000)
+                }
+            })
         }
     })
 }

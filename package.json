@@ -6,6 +6,7 @@
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "start": "electron .",
+    "rebuild": "electron-rebuild",
     "dist": "electron-builder"
   },
   "author": "Tirth Jain",
@@ -41,6 +42,8 @@
   "dependencies": {
     "child_process": "^1.0.2",
     "node-machine-id": "^1.1.12",
-    "robotjs": "^0.6.0"
+    "robotjs": "^0.6.0",
+    "serialport": "^10.5.0",
+    "systeminformation": "^5.17.9"
   }
 }

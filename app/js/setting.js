@@ -77,6 +77,7 @@ $(document).ready(() => {
         addfile: utilites.getelement("addfile"),
         myplayer: utilites.getelement("myplayer"),
         folder: utilites.getelement("folder"),
+        coinSet: utilites.getelement("coinset")
     }
     dom.close.on("click", utilites.closingcurntwindow);
     // setting.comport(dom.comport);
@@ -87,6 +88,7 @@ $(document).ready(() => {
         // let databit = dom.databit.val();
         // let stopbit = dom.stopbit.val();
         let gameply = dom.gameply.val();
+        let coinset = dom.coinSet.val();
 
         let data = {
             // comport: comport,
@@ -94,6 +96,7 @@ $(document).ready(() => {
             // databit: databit,
             // stopbit: stopbit,
             gameply: gameply,
+            coinset: coinset != "" ? coinset : 1,
             folder: lastFolder_ != "" ? lastFolder_ : dom.folder.val(),
             myplayer: myplayer != "" ? myplayer : dom.myplayer.html(),
         }

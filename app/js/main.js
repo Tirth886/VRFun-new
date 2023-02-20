@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(document).ready(async () => {
     const { ipcRenderer } = require("electron");
     const { BrowserWindow, powerMonitor } = require('electron').remote;
 
@@ -7,9 +7,23 @@ $(document).ready(() => {
     const url = require('url');
     const os = require('os')
     const robot = require('robotjs')
+    const serialPort = require('serialport')
+
+    const dataSerial = await serialPort.SerialPort.list()
+    let PorocessList = dataSerial.filter(e => e.vendorId !== undefined && e.productId !== undefined)
+    let isKeyboardListen = false;
+    if (PorocessList.length > 0) {
+        isKeyboardListen = true;
+    }
+
     const execSync = require('child_process').execSync;
 
     let setting_ = JSON.parse(localStorage.getItem("setting"));
+    let totalCoinSet = 0;
+    if (typeof setting_.coinset !== "undefined") {
+        totalCoinSet = setting_.coinset;
+    }
+
 
     function closeWindow(player, time, timeout = '') {
         let mili = time * 60000
@@ -42,6 +56,28 @@ $(document).ready(() => {
         }, mili);
     }
 
+    var combinationKeyPress = [];
+
+    function gameCreditCoins(enterCoin, totalCredited) {
+
+        if (!isKeyboardListen) return false;
+
+        let coin = parseInt(enterCoin.text().trim())
+        coin += 1
+        if (coin === parseInt(totalCoinSet)) {
+            console.log(enterCoin)
+            enterCoin.html(0)
+            let creditCoin = parseInt(totalCredited.text().trim())
+            creditCoin += 1;
+            if (creditCoin < 10) {
+                totalCredited.html("0" + creditCoin)
+            } else {
+                totalCredited.html(creditCoin)
+            }
+        } else {
+            enterCoin.html(coin)
+        }
+    }
     const utilites = {
         selector: function (args) {
             return {
@@ -130,7 +166,7 @@ $(document).ready(() => {
         },
         setting: {
             name: null,
-            height: 300,
+            height: 440,
             width: 390,
             file_name: "setting.html"
         },
@@ -211,11 +247,16 @@ $(document).ready(() => {
         play: utilites.getelement("play-video"),
         stop: utilites.getelement("stop-video"),
         pass: utilites.getelement("pass"),
+        enterCoin: utilites.getelement("enterCoin"),
+        totalCoinSet: utilites.getelement("totalCoinSet"),
+        totalCredited: utilites.getelement("totalCredited"),
         // btnn     : utilites.getelement("login"),
         // lgnb     : utilites.getelement("loginblock"),
         game: utilites.getelement("games")
         // list     : utilites.getelement(["list-games"])
     }
+
+    dom.totalCoinSet.html(totalCoinSet)
 
     dom.playlist.on("click", (e) => {
         e.preventDefault();
@@ -255,19 +296,30 @@ $(document).ready(() => {
     var TIMEOUT = '';
     dom.play.on("click", (e) => {
         e.preventDefault();
-        let file = JSON.parse(localStorage.getItem("fileevent"));
-        if (file.event) {
-            if (typeof file.event !== "undefined" && file.event.indexOf(".exe") >= 0) {
-                setTimeout(() => {
-                    robot.keyTap("enter")
+        let totalCreditedSet = parseInt(dom.totalCredited.text().trim())
+        if (totalCreditedSet == 0 && totalCoinSet != 0) {
+            alert("Enter Some Credit :(");
+        } else {
+
+            let file = JSON.parse(localStorage.getItem("fileevent"));
+            if (file.event) {
+                if (typeof file.event !== "undefined" && file.event.indexOf(".exe") >= 0) {
                     setTimeout(() => {
-                        robot.keyTap("space")
+                        robot.keyTap("enter")
+                        setTimeout(() => {
+                            robot.keyTap("space")
+                        }, 3000)
                     }, 3000)
-                }, 3000)
+                }
+                if (totalCoinSet != 0) {
+                    totalCreditedSet -= 1;
+                    dom.totalCredited.html("0" + totalCreditedSet);
+                    combinationKeyPress = [];
+                }
+                $(document).find("div.single-click").length == 1 ? window_option.playvideo(openwindow) : alert("Select Game")
+                TIMEOUT = closeWindow(setting_.myplayer, setting_.gameply ? setting_.gameply : 10000);
+                ipcRenderer.send("process_", { "process": true })
             }
-            $(document).find("div.single-click").length == 1 ? window_option.playvideo(openwindow) : alert("Select Game")
-            TIMEOUT = closeWindow(setting_.myplayer, setting_.gameply ? setting_.gameply : 10000);
-            ipcRenderer.send("process_", { "process": true })
         }
     })
     dom.stop.on("click", () => {
@@ -289,13 +341,14 @@ $(document).ready(() => {
         closeWindow(setting_.myplayer, 0, TIMEOUT);
     })
 
-
-
+    ipcRenderer.on("test_gamecoin_credit", (e, a) => {
+        gameCreditCoins(dom.enterCoin, dom.totalCredited)
+    })
 
     var getRandomIntInclusive = function (min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值 
+        return Math.floor(Math.random() * (max - min + 1)) + min; 
     }
 
     var setBubble = function (num) {

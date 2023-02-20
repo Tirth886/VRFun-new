@@ -4,18 +4,25 @@
     <title>
         VR FUN
     </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body id="bg">
     <div class="position-relative h-100" id="games">
-        <div class="container position-absolute top-0 drage-event" style="left: 0;width: 96%;-webkit-app-region: drag;padding-bottom: 2.5rem;"></div>
+        <div class="container position-absolute top-0 drage-event"
+            style="left: 0;width: 96%;-webkit-app-region: drag;padding-bottom: 2.5rem;"></div>
         <div class="container mb-2" style="margin-bottom: 3rem;">
             <div class="position-absolute top-0 left-0 ml-4">
-                <h1>VR<br>FUN</h1>
+                <h1>VR<br>FUN<br>Beta</h1>
             </div>
         </div>
-        <img src="./media/263-2638369_fantastic-vr-headset.png" width="20%" class="position-absolute" style="top: 2rem;left: 40%;">
+        <img src="./media/263-2638369_fantastic-vr-headset.png" width="20%" class="position-absolute"
+            style="top: 2rem;left: 40%;">
+        <div class="position-absolute" style="top: 4.5rem;right: 5%;font-size: 2.2rem;font-family: sans-serif;text-transform: uppercase;font-weight: bolder;color: #fff;text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+        1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;letter-spacing: 5;">
+            <strong>Credit: <label id="totalCredited">00</label> (<span id="enterCoin">0</span>/<span id="totalCoinSet">0</span>)</strong>
+        </div>          
         <div class="container pl-2 text-left" style="padding-left: 9rem;">
             <!-- <div class="vr" data-disable="5D" data-enable="9D" style="--btn-hue: 200; --btn-saturation: 100%; --btn-bg-lightness: 85%;">9D</div> -->
             <!-- <div class="vr" data-disable="9D" data-enable="5D" style="--btn-hue: 200; --btn-saturation: 100%; --btn-bg-lightness: 85%;">5D</div> -->
@@ -41,7 +48,8 @@
                     </span>
                 </div>
             </div>
-            <div class="text-center container-games-list" id="9D" style="margin-left: 10rem;height: calc(100vh - 32vh);">
+            <div class="text-center container-games-list" id="9D" style="margin-left: 10rem;">
+                
 
             </div>
             <div class="text-center container-games-list" id="5D" style="margin-left: 9rem;">
@@ -83,18 +91,23 @@
             <div class="position-absolute bottom-0 right-0 mr-2 mb-2">
                 <span class="switch">
                     <div-button id="settingwindow" tabindex="0"
-                        style="padding-left: 1.5rem;padding-right: 1.5rem;padding-top: 0.5rem;padding-bottom: 0.5rem;background: yellow;" title="Setting">
+                        style="padding-left: 1.5rem;padding-right: 1.5rem;padding-top: 0.5rem;padding-bottom: 0.5rem;background: yellow;"
+                        title="Setting">
                         <img src="./media/settings.png" width="15px"><span style="color: #000;"><b>SETTING</b></span>
-                </div-button>
-                <div-button id="playlistwindow" tabindex="0" style="padding-left: 1.5rem;padding-right: 1.5rem;padding-top: 0.5rem;padding-bottom: 0.5rem;">
-                    <img src="./media/list.png" width="15px"><span style="color: #000;"><b>PLAY LIST</b></span>
-                </div-button>
-                <div-button id="close" tabindex="0" style="padding-left: 1.5rem;padding-right: 1.5rem;padding-top: 0.5rem;padding-bottom: 0.5rem;background:  #ff4242dc;" title="Setting">
-                    <img src="./media/close.png" width="15px"><span style="color: #000;"><b>CLOSE</b></span>
-                </div-button>
-                <div-button id="shutdown" tabindex="0" style="padding-left: 1.5rem;padding-right: 1.5rem;padding-top: 0.5rem;padding-bottom: 0.5rem;background-color: red;">
-                    <img src="./media/off.png" width="15px"> <span style="color: #fff;"><b>SHUTDOWN</b></span>
-                </div-button>
+                    </div-button>
+                    <div-button id="playlistwindow" tabindex="0"
+                        style="padding-left: 1.5rem;padding-right: 1.5rem;padding-top: 0.5rem;padding-bottom: 0.5rem;">
+                        <img src="./media/list.png" width="15px"><span style="color: #000;"><b>PLAY LIST</b></span>
+                    </div-button>
+                    <div-button id="close" tabindex="0"
+                        style="padding-left: 1.5rem;padding-right: 1.5rem;padding-top: 0.5rem;padding-bottom: 0.5rem;background:  #ff4242dc;"
+                        title="Setting">
+                        <img src="./media/close.png" width="15px"><span style="color: #000;"><b>CLOSE</b></span>
+                    </div-button>
+                    <div-button id="shutdown" tabindex="0"
+                        style="padding-left: 1.5rem;padding-right: 1.5rem;padding-top: 0.5rem;padding-bottom: 0.5rem;background-color: red;">
+                        <img src="./media/off.png" width="15px"> <span style="color: #fff;"><b>SHUTDOWN</b></span>
+                    </div-button>
                 </span>
             </div>
         </div>
