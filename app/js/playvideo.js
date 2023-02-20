@@ -37,6 +37,7 @@ $(document).ready(() => {
     //     },mili)
     //     return false;
     // }
+    // Test COmment
     if (file.event && file.player != "") {
         $("title").html(file.event.split("/").slice(-1).join())
         console.log($('title'))
