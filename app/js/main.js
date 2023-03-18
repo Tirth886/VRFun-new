@@ -1,6 +1,6 @@
 $(document).ready(async () => {
     const { ipcRenderer } = require("electron");
-    const { BrowserWindow, powerMonitor } = require('electron').remote;
+    const { BrowserWindow, powerMonitor, dialog } = require('electron').remote;
 
     const path = require('path');
     const fs = require('fs');
@@ -24,6 +24,17 @@ $(document).ready(async () => {
         totalCoinSet = setting_.coinset;
     }
 
+
+    function optionsDialog(type, title, message) {
+        const options = {
+            type: type,
+            buttons: ["ok"],
+            defaultId: 0,
+            title: title,
+            message: message,
+        };
+        return options;
+    }
 
     function closeWindow(player, time, timeout = '') {
         let mili = time * 60000
@@ -298,7 +309,12 @@ $(document).ready(async () => {
         e.preventDefault();
         let totalCreditedSet = parseInt(dom.totalCredited.text().trim())
         if (totalCreditedSet == 0 && totalCoinSet != 0) {
-            alert("Enter Some Credit :(");
+            // alert("Please Insert Coin.");
+            dialog.showMessageBox(
+                new BrowserWindow({
+                    show: false,
+                    alwaysOnTop: true
+                }), { ...optionsDialog("error", "", "Please Insert Coins."), detail: " " }, (response) => { });
         } else {
 
             let file = JSON.parse(localStorage.getItem("fileevent"));
@@ -348,7 +364,7 @@ $(document).ready(async () => {
     var getRandomIntInclusive = function (min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min; 
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
     var setBubble = function (num) {

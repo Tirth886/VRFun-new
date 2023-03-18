@@ -93,7 +93,7 @@ nsis:
     !macroend
 
     !addplugindir /x86-unicode "C:\Users\HP\AppData\Local\electron-builder\Cache\nsis\nsis-resources-3.4.1\plugins\x86-unicode"
-    !include "C:\Users\HP\AppData\Local\Temp\t-BYNetm\0-messages.nsh"
+    !include "C:\Users\HP\AppData\Local\Temp\t-vACpDc\0-messages.nsh"
 
     Var newStartMenuLink
     Var oldStartMenuLink
